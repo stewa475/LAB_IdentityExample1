@@ -1,0 +1,35 @@
+﻿
+@model Tasks
+
+@{
+    ViewData["Title"] = "Edit Task";
+}
+
+<div><a href="/Task">Tasks</a>/@ViewData["Title"]</div>
+<br />
+
+<h1>@ViewData["Title"]</h1>
+
+@{
+    if (ViewData["errorMsg"] != null)
+    {
+        <p><strong>@ViewData["errorMsg"]</strong></p>
+    }
+}
+
+<form asp-controller="Task" asp-action="EditTasks" method="post">
+    @*@Html.HiddenFor(m => m.Id)*@
+    @Html.LabelFor(m => m.TaskTitle)<br />
+    @Html.EditorFor(m => m.TaskTitle, new { htmlAttributes = new { @class = "form-control" } })<br />
+    <br />
+    @Html.LabelFor(m => m.TaskDescription)<br />
+    @Html.TextAreaFor(m => m.TaskDescription)<br />
+    <br />
+    @Html.LabelFor(m => m.DueDate)<br />
+    @Html.EditorFor(m => m.DueDate, new { htmlAttributes = new { @class = "form-control" } })<br />
+    <br />
+    
+    <br />
+    <input type="submit" value="Save Changes" class="btn btn-primary" />
+</form>
+

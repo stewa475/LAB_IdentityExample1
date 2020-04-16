@@ -1,0 +1,27 @@
+﻿
+
+@{
+    ViewData["Title"] = "Index";
+    List<Tasks> tasks = (List<Tasks>)ViewData["Tasks"];
+}
+
+<h1>TASK LIST</h1>
+<br />
+<p><a href="/Task/AddTask" class="btn btn-success" role="button">Add Task</a></p>
+<br />
+<p>CURRENT TASKS</p>
+<p>______________________________________________________________________________________________________________________________________________________________________</p>
+@foreach (Tasks t in tasks)
+{
+<div>
+    <a href="/Task/EditTasks/@t.Id" class="btn btn-primary">Edit</a>&nbsp;
+    <a href="/Task/DeleteTasks/@t.Id" class="btn btn-primary">Delete</a>&nbsp;
+    @t.TaskTitle
+    @*<fieldset>
+        <input asp-for="@t.Complete" type="checkbox" data-val="1" name="Complete" value="1" />&nbsp;Mark Complete&nbsp;
+        <input asp-for="@t.Complete" type="hidden" name="NotComplete" value="0" /><br />
+    </fieldset>*@
+    <p>______________________________________________________________________________________________________________________________________________________________________</p>
+</div>
+}
+

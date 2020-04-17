@@ -15,7 +15,7 @@ namespace IdentityExample1.Models
         private string taskTitle;
         private string taskDescription;
         private DateTime dueDate;
-        private int complete;
+        private bool complete;
 
         public int Id { get => id; set => id = value; }
         public int UserId { get => userId; set => userId = value; }
@@ -34,8 +34,8 @@ namespace IdentityExample1.Models
         [Required(ErrorMessage = "Please select a valid due date")]
         public DateTime DueDate { get => dueDate; set => dueDate = value; }
 
-        [DisplayName("Have you completed this task?")]
-        public int Complete { get => complete; set => complete = value; }
+        [DisplayName("Mark Complete")]
+        public bool Complete { get => complete; set => complete = value; }
         
     }
 }

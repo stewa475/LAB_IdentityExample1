@@ -20,7 +20,7 @@ namespace IdentityExample1.Models
         public int CreateTask(Tasks t, int loginId)
         {
             t.UserId = loginId;
-            t.Complete = 0;
+            t.Complete = false;
             //t.DueDate = DateTime.Now;
 
             string addQuery = "INSERT INTO Tasks (UserId, TaskTitle, TaskDescription, DueDate, Complete) ";
@@ -71,5 +71,7 @@ namespace IdentityExample1.Models
             string queryString = "SELECT * FROM Tasks WHERE TaskTitle LIKE @search OR TaskDescription LIKE @search";
             return conn.Query<Tasks>(queryString, new { search = search });
         }
+
+        
     }
 }

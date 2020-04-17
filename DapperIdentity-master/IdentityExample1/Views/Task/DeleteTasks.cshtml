@@ -14,8 +14,8 @@
 <p>@t.TaskDescription</p><br />
 <p>@t.DueDate</p><br />
 <p>Task created by @ViewData["UID"]</p><br />
-<br />
-@if (t.Complete == 0)
+
+@if (t.Complete == false)
 {
     <p>This task has not been completed.</p>
 }
@@ -24,7 +24,6 @@ else
     <p>This task has been completed.</p>
 }
 
-<br />
 <br />
 <div><a href="/Task/Delete/@t.Id" class="btn btn-primary">CONFIRM DELETE</a></div>
 

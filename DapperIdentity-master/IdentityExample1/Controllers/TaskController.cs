@@ -176,5 +176,10 @@ namespace IdentityExample1.Controllers
                 return View();
             }
         }
+
+        //public IActionResult MarkComplete(Tasks t)
+        //{
+
+        //}
     }
 }

@@ -123,6 +123,16 @@ namespace IdentityExample1.Controllers
             }
         }
 
+
+        [HttpPost]
+        public IActionResult Complete(int id)
+        {
+            var task = dal.GetTasksById(id);
+            task.Complete = !task.Complete;
+            dal.UpdateTasksById(task);
+            return Index();
+        }
+
         [HttpPost]
         public IActionResult EditTasks(Tasks t)
         {

@@ -34,9 +34,21 @@
     {
         <tr>
             <td>
+                <form action="\task\Complete" method="Post">
+                    @if (t.Complete == false)
+                    {
+                        <input asp-for="Complete" type="submit" data-val="true" name="Complete" value="Complete" class="btn btn-primary" />
+                        <input asp-for="Id" type="hidden" value="@t.Id" /><br />
+                    }
+                    else
+                    {
+                        <input asp-for="Complete" type="submit" data-val="true" name="Complete" value="Un-Complete" class="btn btn-primary" />
+                        <input asp-for="Id" type="hidden" value="@t.Id" /><br />
+                    }
 
-                <input asp-for="Complete" type="submit" data-val="true" name="Complete" value="Complete" class="btn btn-primary"/>
-                <input asp-for="Complete" type="hidden" data-val="false" name="Complete" value="false" /><br />    
+
+                </form>
+               
             </td>
             <td>
                 <a href="/Task/Detail/@t.Id">@t.TaskTitle</a>

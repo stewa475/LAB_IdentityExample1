@@ -56,21 +56,19 @@ namespace IdentityExample1.Controllers
         [HttpPost]
         public IActionResult AddTask(Tasks t)
         {
-
-            int loginId = int.Parse(_userManager.GetUserId(User));
-
             //add to the database here
             if (ModelState.IsValid)
             {
+                int loginId = int.Parse(_userManager.GetUserId(User));
                 int result = dal.CreateTask(t, loginId);
+                return RedirectToAction("Index");
             }
             else
             {
                 ViewData["errorMsg"] = "Your form had errors. Please correct and re-submit.";
                 return View("AddTask", t);
             }
-
-            return View("TaskIndex");
+            
         }
 
         public IActionResult Delete(int id)

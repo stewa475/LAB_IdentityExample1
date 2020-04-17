@@ -11,24 +11,26 @@
     }
 }
 
-<h1>Add Task</h1>
+@*<h1>Add Task</h1>*@
 @*<input type="hidden" name="Name" value="@ViewData["Name"]" />*@
-Please enter a task:
+<h3 class="display-3 text-center">Please enter a new task</h3>
 <form asp-controller="Task" asp-action="AddTask" method="post">
-    @Html.LabelFor(m => m.TaskTitle)<br />
+    @Html.LabelFor(m => m.TaskTitle) @Html.ValidationMessageFor(m => m.TaskTitle, "", new { @class = "text-danger" })<br />
     @Html.EditorFor(m => m.TaskTitle, new { htmlattributes = new { @class = "form-control" } })<br />
 
     <p>
-        @Html.LabelFor(m => m.TaskDescription)<br />
+        @Html.LabelFor(m => m.TaskDescription) @Html.ValidationMessageFor(m => m.TaskDescription, "", new { @class = "text-danger" })<br />
         <textarea id="TaskDescription" name="TaskDescription" rows="5" cols="40">@Model.TaskDescription</textarea>
     </p>
 
     @*@Html.LabelFor(m => m.DueDate)<br />
-    @Html.EditorFor(m => m.DueDate, new { htmlattributes = new { @class = "form-control" } })<br />*@
+        @Html.EditorFor(m => m.DueDate, new { htmlattributes = new { @class = "form-control" } })<br />*@
 
-    <div>@Html.LabelFor(t => t.DueDate) (Format ex.): yyyy.mm.dd</div>
-    <div>@Html.EditorFor(t => t.DueDate)</div>
+    <div>@Html.LabelFor(t => t.DueDate) @Html.ValidationMessageFor(m => m.DueDate, "", new { @class = "text-danger" })</div>
 
+    <div>@Html.EditorFor(t => t.DueDate)</div> 
+
+    
     <input type="hidden" name="UserId" value="@ViewData["UID"]" /><br />
     <p><input type="submit" value="Submit" /></p>
 </form>

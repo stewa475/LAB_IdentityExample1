@@ -63,5 +63,13 @@ namespace IdentityExample1.Models
             editString += "DueDate = @DueDate, Complete = @Complete WHERE Id = @Id AND UserID = @UserID";
             return conn.Execute(editString, t);
         }
+
+        public IEnumerable<Tasks> Search(string search)
+        {
+            search = '%' + search.ToLower() + '%';
+
+            string queryString = "SELECT * FROM Tasks WHERE TaskTitle LIKE @search OR TaskDescription LIKE @search";
+            return conn.Query<Tasks>(queryString, new { search = search });
+        }
     }
 }

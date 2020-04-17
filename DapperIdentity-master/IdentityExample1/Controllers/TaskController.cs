@@ -32,10 +32,20 @@ namespace IdentityExample1.Controllers
 
         public IActionResult Index()
         {
-            ViewData["tasks"] = dal.GetTasksAll();
-            ViewData["Name"] = User.Identity.Name;
-            ViewData["UID"] = _userManager.GetUserId(User);
-            return View("TaskIndex");
+                
+            if (User.Identity.Name != null)
+            {
+                int id = int.Parse(_userManager.GetUserId(User));
+                ViewData["tasks"] = dal.GetTasksByUserId(id);
+                ViewData["Name"] = User.Identity.Name;
+                ViewData["UID"] = _userManager.GetUserId(User);
+                return View("TaskIndex");
+            }
+            else
+            {
+                return View("../Account/Login");
+            }
+            
         }
 
         [HttpGet]
@@ -138,6 +148,32 @@ namespace IdentityExample1.Controllers
             }
 
             return RedirectToAction("Index");
+        }
+
+        public IActionResult Search(string search)
+        {
+            IEnumerable<Tasks> results = dal.Search(search);
+
+            ViewData["Search Results"] = results;
+
+            return View();
+        }
+
+        public IActionResult Detail(int id)
+        {
+            Tasks t = dal.GetTasksById(id);
+
+            if (t == null)
+            {
+                return View("NoSuchItem");
+            }
+            else
+            {
+                ViewData["Title"] = t.TaskTitle;
+                ViewData["Tasks"] = t;
+
+                return View();
+            }
         }
     }
 }

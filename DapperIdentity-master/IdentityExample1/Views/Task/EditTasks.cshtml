@@ -25,10 +25,11 @@
     @Html.LabelFor(m => m.TaskDescription)<br />
     @Html.TextAreaFor(m => m.TaskDescription)<br />
     <br />
-    @Html.LabelFor(m => m.DueDate)<br />
-    @Html.EditorFor(m => m.DueDate, new { htmlAttributes = new { @class = "form-control" } })<br />
+    @Html.LabelFor(t => t.DueDate) @Html.ValidationMessageFor(m => m.DueDate, "", new { @class = "text-danger" })
+
+    @Html.EditorFor(t => t.DueDate)
     <br />
-    
+
     <br />
     <input type="submit" value="Save Changes" class="btn btn-primary" />
 </form>

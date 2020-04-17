@@ -60,7 +60,7 @@ namespace IdentityExample1.Models
         public int UpdateTasksById(Tasks t)
         {
             string editString = "UPDATE Tasks SET TaskTitle = @TaskTitle, TaskDescription = @TaskDescription, ";
-            editString += "DueDate = @DueDate, Complete = @Complete WHERE Id = @Id AND UserID = @UserID";
+            editString += "DueDate = @DueDate WHERE Id = @Id";
             return conn.Execute(editString, t);
         }
 

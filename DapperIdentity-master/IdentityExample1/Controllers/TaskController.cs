@@ -131,6 +131,7 @@ namespace IdentityExample1.Controllers
             if (ModelState.IsValid)
             {
                 result = dal.UpdateTasksById(t);
+                
             }
             else
             {
@@ -147,7 +148,7 @@ namespace IdentityExample1.Controllers
                 TempData["UserMsg"] = "Item not updated";
             }
 
-            return RedirectToAction("Index");
+            return RedirectToAction("Index", result);
         }
 
         public IActionResult Search(string search)

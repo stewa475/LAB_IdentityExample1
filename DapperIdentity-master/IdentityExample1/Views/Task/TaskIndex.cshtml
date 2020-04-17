@@ -16,19 +16,23 @@
 <br />
 <p><a href="/Task/AddTask" class="btn btn-success" role="button">Add Task</a></p>
 <br />
+@if (TempData["UserMsg"] != null)
+{
+<p>@TempData["UserMsg"]</p>
+}
 <p>CURRENT TASKS</p>
 <p>______________________________________________________________________________________________________________________________________________________________________</p>
 
 @foreach (Tasks t in tasks)
 {
     <div>
-        <a href="/Task/EditTasks/@t.Id" class="btn btn-primary">Edit</a>&nbsp;
-        <a href="/Task/DeleteTasks/@t.Id" class="btn btn-primary">Delete</a>&nbsp;
-        <a href="/Task/Detail/@t.Id">@t.TaskTitle</a>
         @*<fieldset>
                 <input asp-for="@t.Complete" type="checkbox" data-val="1" name="Complete" value="1" />&nbsp;Mark Complete&nbsp;
                 <input asp-for="@t.Complete" type="hidden" name="NotComplete" value="0" /><br />
             </fieldset>*@
+        <a href="/Task/Detail/@t.Id">@t.TaskTitle</a>
+        <a href="/Task/EditTasks/@t.Id" class="btn btn-primary">Edit</a>&nbsp;
+        <a href="/Task/DeleteTasks/@t.Id" class="btn btn-primary">Delete</a>&nbsp;
         <p>______________________________________________________________________________________________________________________________________________________________________</p>
     </div>
 }

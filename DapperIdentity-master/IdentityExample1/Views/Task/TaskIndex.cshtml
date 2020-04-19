@@ -8,15 +8,14 @@
 }
 
 <h1>TASK LIST</h1>
-<form asp-controller="Task" asp-action="Search" method="post">
-    <input type="search" id="Search" name="Search" />
 
-
-    <input type="submit" value="Search" />
-</form>
+@*<form class="form-inline my-2 my-lg-0" asp-controller="Task" asp-action="Search" method="post">
+    <input class="form-control mr-sm-2" type="search" id="Search" name="Search" placeholder="Search" />
+    <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
+</form>*@
 <br />
 <p><a href="/Task/AddTask" class="btn btn-success" role="button">Add Task</a></p>
-<br />
+<br /> 
 @if (TempData["UserMsg"] != null)
 {
 <p>@TempData["UserMsg"]</p>

@@ -22,7 +22,7 @@
 }
 <p>CURRENT TASKS</p>
 <p>______________________________________________________________________________________________________________________________________________________________________</p>
-<table style="width:40%">
+<table style="width:50%">
     <tr>
         <th>Mark Complete</th>
         <th>Tasks</th>
@@ -33,7 +33,7 @@
     {
         <tr>
             <td>
-                <form action="\task\Complete" method="Post">
+                <form action="\Task\Complete" method="Post">
                     @if (t.Complete == false)
                     {
                         <input asp-for="Complete" type="submit" data-val="true" name="Complete" value="Complete" class="btn btn-primary" />

@@ -87,11 +87,11 @@ namespace IdentityExample1.Controllers
 
             if (result == 1)
             {
-                TempData["UserMsg"] = "Item successfully deleted";
+                TempData["UserMsg"] = "Task successfully deleted";
             }
             else
             {
-                TempData["UserMsg"] = "Item for deletion not found";
+                TempData["UserMsg"] = "Task for deletion not found";
             }
 
             return RedirectToAction("Index");
@@ -151,11 +151,11 @@ namespace IdentityExample1.Controllers
 
             if (result == 1)
             {
-                TempData["UserMsg"] = "Item successfully updated";
+                TempData["UserMsg"] = "Task successfully updated";
             }
             else
             {
-                TempData["UserMsg"] = "Item not updated";
+                TempData["UserMsg"] = "Task not updated";
             }
 
             return RedirectToAction("Index", result);
@@ -186,10 +186,5 @@ namespace IdentityExample1.Controllers
                 return View();
             }
         }
-
-        //public IActionResult MarkComplete(Tasks t)
-        //{
-
-        //}
     }
 }

@@ -163,11 +163,20 @@ namespace IdentityExample1.Controllers
 
         public IActionResult Search(string search)
         {
-            IEnumerable<Tasks> results = dal.Search(search);
+            if (User.Identity.Name != null)
+            {
+                int loginId = int.Parse(_userManager.GetUserId(User));
+                IEnumerable<Tasks> results = dal.Search(search, loginId);
 
-            ViewData["Search Results"] = results;
+                ViewData["Search Results"] = results;
 
-            return View();
+                return View();
+            }
+            else
+            {
+                return View("../Account/Login");
+            }
+            
         }
 
         public IActionResult Detail(int id)

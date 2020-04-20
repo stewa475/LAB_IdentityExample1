@@ -39,7 +39,7 @@ namespace IdentityExample1.Models
 
         public IEnumerable<Tasks> GetTasksByUserId(int id)
         {
-            string queryString = "SELECT * FROM Tasks WHERE UserId = @id";
+            string queryString = "SELECT * FROM Tasks WHERE UserId = @id ORDER BY DueDate";
             return conn.Query<Tasks>(queryString, new { id = id });
         }
 
@@ -64,12 +64,12 @@ namespace IdentityExample1.Models
             return conn.Execute(editString, t);
         }
 
-        public IEnumerable<Tasks> Search(string search)
+        public IEnumerable<Tasks> Search(string search, int loginId)
         {
             search = '%' + search.ToLower() + '%';
 
-            string queryString = "SELECT * FROM Tasks WHERE TaskTitle LIKE @search OR TaskDescription LIKE @search";
-            return conn.Query<Tasks>(queryString, new { search = search });
+            string queryString = "SELECT * FROM Tasks WHERE (TaskTitle LIKE @search OR TaskDescription LIKE @search) AND UserId = @val ORDER BY DueDate";
+            return conn.Query<Tasks>(queryString, new { search = search , val = loginId});
         }
 
         

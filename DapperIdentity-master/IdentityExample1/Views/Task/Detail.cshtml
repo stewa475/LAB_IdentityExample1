@@ -2,11 +2,21 @@
 @{
     Tasks t = (Tasks)ViewData["Tasks"];
 }
-<div><a href="/Task">Tasks</a>/@t.TaskTitle</div><br />
+<div><a href="/Task">Tasks</a>/@t.TaskTitle</div>
+<br />
 <h1 class="display-2">@t.TaskTitle</h1>
 <p>______________________________________________________________________________________________________________________________________________________________________</p>
-<div>@t.TaskDescription</div><br />
+<div>@t.TaskDescription</div>
+<br />
 <div><strong>@Html.LabelFor(m => m.DueDate)</strong> @t.DueDate.ToString("MM/dd/yyyy hh:mm tt")</div>
 
+@if (t.Complete == false)
+{
+    <p>This task has not been completed.</p>
+}
+else
+{
+    <p>This task has been completed.</p>
+}
 
 

@@ -9,10 +9,11 @@
 
 <p>CURRENT TASKS</p>
 <p>______________________________________________________________________________________________________________________________________________________________________</p>
-<table style="width:40%">
+<table style="width:60%">
     <tr>
         <th>Completed</th>
         <th>Tasks</th>
+        <th>Due Date</th>
         <th>Edit</th>
         <th>Delete</th>
     </tr>
@@ -22,15 +23,15 @@
         
          <tr>
             <td>
-             <form action="\Task\Complete" method="Post">
-                    @if (t.Complete == false)
+                <form action="\Task\Complete" method="Post">
+                    @if (t.Complete == true)
                     {
-                        <input asp-for="Complete" type="submit" data-val="true" name="Complete" value="Complete" class="btn btn-primary" />
+                        <input asp-for="Complete" type="submit" data-val="true" name="Complete" value="Complete" class="btn btn-outline-success" />
                         <input asp-for="Id" type="hidden" value="@t.Id" /><br />
                     }
                     else
                     {
-                        <input asp-for="Complete" type="submit" data-val="true" name="Complete" value="Un-Complete" class="btn btn-primary" />
+                        <input asp-for="Complete" type="submit" data-val="true" name="Complete" value="Not Complete" class="btn btn-outline-secondary" />
                         <input asp-for="Id" type="hidden" value="@t.Id" /><br />
                     }
 
@@ -39,11 +40,14 @@
             <td>
                 <a href="/Task/Detail/@t.Id">@t.TaskTitle</a>
             </td>
-            <td>
-                <a href="/Task/EditTasks/@t.Id" class="btn btn-primary">Edit</a>&nbsp;
+             <td>
+                <a>@t.DueDate.ToString()</a>
             </td>
             <td>
-                <a href="/Task/DeleteTasks/@t.Id" class="btn btn-primary">Delete</a>&nbsp;<br />
+                <a href="/Task/EditTasks/@t.Id" class="btn btn-outline-primary">Edit</a>&nbsp;
+            </td>
+            <td>
+                <a href="/Task/DeleteTasks/@t.Id" class="btn btn-outline-danger">Delete</a>&nbsp;<br />
             </td>
         </tr>
         }
